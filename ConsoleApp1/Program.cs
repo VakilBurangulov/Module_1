@@ -6,15 +6,14 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            string MyName = "Vakil";
-            byte MyAge = 14;
-            bool HaveIApet = true;
-            double MyShoeSize = 41;
-
-            Console.WriteLine("My name is " + MyName);
-            Console.WriteLine("MyAge " + MyAge);
-            Console.WriteLine("Do I have a pet? " + HaveIApet);
-            Console.WriteLine("My shoe size is " + MyShoeSize);
+            Console.Write("Enter your name: ");
+            var name = Console.ReadLine();
+            Console.Write("Enter your age: ");
+            var age = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"Your name is {name} and age is {age}");
+            Console.Write("Enter your birthday: ");
+            var birthday = Console.ReadLine();
+            Console.WriteLine($"Your birthday is {birthday}");
         }
     }
 }
