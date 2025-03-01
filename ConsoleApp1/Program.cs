@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace ConsoleApp1
 {
@@ -6,31 +7,49 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
+            ShowArray(GetArrayFromConsole(10), true);
+        }
 
-            var color = Console.ReadLine();
+        static int[] GetArrayFromConsole(int num = 5)
+        {
+            var result = new int[num];
 
-            if (color == "red")
+            for (int i = 0; i < result.Length; i++)
             {
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.ForegroundColor = ConsoleColor.Black;
-
-                Console.WriteLine("Your color is red!");
+                Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+                result[i] = int.Parse(Console.ReadLine());
             }
 
-            else if (color == "green")
-            {
-                Console.BackgroundColor = ConsoleColor.Green;
-                Console.ForegroundColor = ConsoleColor.Black;
+            return result;
+        }
 
-                Console.WriteLine("Your color is green!");
+        static int[] SortArray(int[] array)
+        {
+            int temp;
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = 0; j < array.Length; j++)
+                {
+                    if (array[i] < array[j])
+                    {
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
             }
-            else
-            {
-                Console.BackgroundColor = ConsoleColor.Cyan;
-                Console.ForegroundColor = ConsoleColor.Black;
 
-                Console.WriteLine("Your color is cyan!");
+            return array;
+        }
+
+        static void ShowArray(int[] array, bool sorted = false)
+        {
+            if (sorted)
+                array = SortArray(array);
+
+            foreach (var item in array)
+            {
+                Console.WriteLine(item);
             }
         }
     }
